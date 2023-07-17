@@ -1,12 +1,15 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { Product } from './models/poductModel.mjs'
+import cors from "cors"
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import { connectDatabase } from "./DB/Connection.DB.mjs"
 const app = express();
 const PORT = process.env.PORT || 3001
 dotenv.config()
+
+app.use(cors({ origin: "*", credentials: true }));
 
 app.use(bodyParser.json());
 connectDatabase(process.env.DB)
